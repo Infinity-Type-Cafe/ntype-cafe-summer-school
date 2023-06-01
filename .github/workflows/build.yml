@@ -19,6 +19,7 @@ jobs:
           jekyll build
           mkdir _build_site
           cp -r _site/* _build_site/
+          cd /__w/ntype-cafe-summer-school/ntype-cafe-summer-school
 
       - name: Deploy
         if: ${{ github.ref_name == 'main' }}
