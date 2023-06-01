@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: maplgebra/ntype-cafe:1.1
+    container: maplgebra/ntype-cafe:1.2
 
     steps:
       - name: Checkout
