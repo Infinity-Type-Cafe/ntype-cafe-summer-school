@@ -1,0 +1,27 @@
+name: Build and Depoly
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: maplgebra/ntype-cafe:1.0
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Build
+        run: |
+          cp -v 2023/intro-page/* /srv/jekyll/_post/
+          cd /srv/jekyll
+          jekyll build
+          mkdir _build_site
+          cp _site/*.html _site/*.css _build_site/
+
+      - name: Deploy
+        if: ${{ github.ref_name == 'main' }}
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: /srv/jekyll/_build_site       
