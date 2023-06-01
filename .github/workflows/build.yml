@@ -13,7 +13,7 @@ jobs:
 
       - name: Build
         run: |
-          cp -v 2023/intro-page/* /srv/jekyll/_post/
+          cp 2023/intro-page/* /srv/jekyll/_posts/
           cd /srv/jekyll
           jekyll build
           mkdir _build_site
