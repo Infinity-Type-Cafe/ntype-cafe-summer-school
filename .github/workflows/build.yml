@@ -17,8 +17,8 @@ jobs:
           cp 2023/intro-page/* /srv/jekyll/_posts/
           cd /srv/jekyll
           jekyll build
-          mkdir _build_site
-          cp -r _site/* _build_site/
+          mkdir /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
+          cp -r _site/* /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site/
           cd /__w/ntype-cafe-summer-school/ntype-cafe-summer-school
 
       - name: Deploy
@@ -26,4 +26,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: /srv/jekyll/_build_site
+          folder: /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
