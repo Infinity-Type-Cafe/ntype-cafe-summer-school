@@ -12,7 +12,7 @@ jobs:
           fetch-depth: 1
 
       - name: Build
-        run: 
+        run: |
           cp -r /source/* /srv/jekyll
           cp 2023/intro-page/* /srv/jekyll/_posts/
           cd /srv/jekyll
