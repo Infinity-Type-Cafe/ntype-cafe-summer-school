@@ -18,7 +18,7 @@ jobs:
           cd /srv/jekyll
           jekyll build
           mkdir _build_site
-          cp _site/* _build_site/
+          cp -r _site/* _build_site/
 
       - name: Deploy
         if: ${{ github.ref_name == 'main' }}
