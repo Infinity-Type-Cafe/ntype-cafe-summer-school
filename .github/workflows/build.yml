@@ -16,6 +16,7 @@ jobs:
           git config --global --add safe.directory /__w/ntype-cafe-summer-school/ntype-cafe-summer-school
           cp -r /source/* /srv/jekyll
           cp 2023/intro-page/* /srv/jekyll/_posts/
+          cp -r learn-TT /srv/jekyll
           cd /srv/jekyll
           jekyll build
           mkdir /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
