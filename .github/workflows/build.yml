@@ -1,5 +1,7 @@
 name: Build and Depoly
 on: [push, pull_request]
+permissions:
+  deployments: read|write
 jobs:
   build:
     runs-on: ubuntu-latest
