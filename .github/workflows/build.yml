@@ -3,9 +3,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      deployments: write
-
     container: maplgebra/ntype-cafe:1.3
 
     steps:
@@ -30,6 +27,5 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
