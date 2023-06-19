@@ -1,0 +1,6 @@
+name: synthetic-incompleteness
+depend:
+  standard-library
+  cubical
+include: src
+flags: -W noUnsupportedIndexedMatch

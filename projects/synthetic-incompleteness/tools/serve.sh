@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-cd ../../resources/agda-zorn
+cd ../../resources/synthetic-incompleteness
 python3 -m http.server "${PORT:-8000}" &
 http_server_pid="$!"
 trap 'kill "$http_server_pid"' EXIT
