@@ -1,6 +1,8 @@
 # Agda Zorn
 A formalization of Zorn's Lemma in Agda.
 
+- [讲义](https://github.com/Infinity-Type-Cafe/ntype-cafe-summer-school/blob/main/projects/agda-zorn/src/CubicalExt/Logic/Zorn.lagda.md)
+
 ## Requirements
 
 - [Agda Nightly Build (269204b@master)](https://github.com/agda/agda/commit/269204b682d87778ba1038193db05e728cfadbdb)
