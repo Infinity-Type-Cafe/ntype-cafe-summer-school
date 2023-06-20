@@ -24,6 +24,7 @@ jobs:
           mkdir $repo_path/_build_site
           cp -r _site/* $repo_path/_build_site/
           cd $repo_path
+          cp -r resources/agda-zorn _build_site/
 
       - name: Deploy
         if: ${{ github.ref_name == 'main' }}

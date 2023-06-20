@@ -19,7 +19,6 @@
 *.fls
 *.local
 *.log
-*.pdf
 *.spl
 *.synctex.gz
 *.zip
