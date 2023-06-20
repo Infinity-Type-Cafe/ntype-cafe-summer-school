@@ -12,20 +12,22 @@ jobs:
           fetch-depth: 1
 
       - name: Build
+        env:
+          repo_path : ${GITHUB_WORKSPACE}
         run: |
-          git config --global --add safe.directory /__w/ntype-cafe-summer-school/ntype-cafe-summer-school
+          git config --global --add safe.directory $repo_path
           cp -r /source/* /srv/jekyll
           cp 2023/intro-page/* /srv/jekyll/_posts/
           cp -r learn-TT /srv/jekyll
           cd /srv/jekyll
           jekyll build
-          mkdir /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
-          cp -r _site/* /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site/
-          cd /__w/ntype-cafe-summer-school/ntype-cafe-summer-school
+          mkdir $repo_path/_build_site
+          cp -r _site/* $repo_path/_build_site/
+          cd $repo_path
 
       - name: Deploy
         if: ${{ github.ref_name == 'main' }}
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: /__w/ntype-cafe-summer-school/ntype-cafe-summer-school/_build_site
+          folder: ${GITHUB_WORKSPACE}/_build_site
