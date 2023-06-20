@@ -13,7 +13,7 @@ jobs:
 
       - name: Build
         env:
-          repo_path : ${GITHUB_WORKSPACE}
+          repo_path : ${{ github.workspace }}
         run: |
           git config --global --add safe.directory $repo_path
           cp -r /source/* /srv/jekyll
