@@ -14,6 +14,9 @@ jobs:
       - name: Build
         env:
           repo_path : ${{ github.workspace }}
+        # 1. build introduction page
+        # 2. build learn-TT page
+        # 3. add built pages to deploy folder
         run: |
           git config --global --add safe.directory $repo_path
           cp -r /source/* /srv/jekyll
@@ -25,10 +28,11 @@ jobs:
           cp -r _site/* $repo_path/_build_site/
           cd $repo_path
           cp -r resources/agda-zorn _build_site/
+          cp -r resources/synthetic-incompleteness _build_site/
 
       - name: Deploy
         if: ${{ github.ref_name == 'main' }}
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: _build_site
+          folder: _build_site  
