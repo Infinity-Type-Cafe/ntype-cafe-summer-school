@@ -40,12 +40,12 @@ isPropSemiDecides : isPredicate B → isProp (fᵈ⁻ semiDecides B)
 isPropSemiDecides pred = isPropΠ (λ _ → isProp↔ (pred _) squash₁)
 
 isPropDecidableₚ : isPredicate B → isProp (fₚ decidesₚ B)
-isPropDecidableₚ pred = isPropΠ (λ _ → isProp↔ (pred _) squash₁)
+isPropDecidableₚ {fₚ} pred = isPropΠ λ x → isProp↔ (pred _) (isProp≐ isSetBool (fₚ x) _)
 
 isPropSeparates : isPredicate B₁ → isPredicate B₂ → isProp (fₚ separates B₁ and B₂)
-isPropSeparates pred₁ pred₂ = isProp×
-  (isPropΠ (λ x → isProp↔ (pred₁ x) squash₁))
-  (isPropΠ (λ x → isProp↔ (pred₂ x) squash₁))
+isPropSeparates {fₚ} pred₁ pred₂ = isProp×
+  (isPropΠ (λ x → isProp↔ (pred₁ x) (isProp≐ isSetBool (fₚ x) _)))
+  (isPropΠ (λ x → isProp↔ (pred₂ x) (isProp≐ isSetBool (fₚ x) _)))
 
 isPropEnumerates : isPredicate B → isProp (fₑ enumerates B)
 isPropEnumerates pred = isPropΠ (λ _ → isProp↔ (pred _) squash₁)

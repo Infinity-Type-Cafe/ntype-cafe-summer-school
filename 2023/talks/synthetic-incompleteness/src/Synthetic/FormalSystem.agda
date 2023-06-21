@@ -45,15 +45,15 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
   complete→⊢-dec compl with ⊢-⊢¬-sep
   ... | (fₚ , Hₚ) = f , H
     where
-    fₚ-total : total fₚ
-    fₚ-total φ = ∥₁.map (aux φ) (compl φ) where
-      aux : ∀ φ → (⊢ φ) ⊎ (⊢ ¬ φ) → Σ _ (fₚ φ ≐_)
-      aux φ (inl ⊢φ)  = true  , Hₚ .fst φ .to ⊢φ
-      aux φ (inr ⊢¬φ) = false , Hₚ .snd φ .to ⊢¬φ
+    fₚ-total : ∀ φ → defined (fₚ φ)
+    fₚ-total φ = ∥₁.rec (isPropDefined (fₚ φ)) (aux φ) (compl φ) where
+      aux : ∀ φ → (⊢ φ) ⊎ (⊢ ¬ φ) → defined (fₚ φ)
+      aux φ (inl ⊢φ)  = Hₚ .fst φ .to ⊢φ .fst
+      aux φ (inr ⊢¬φ) = Hₚ .snd φ .to ⊢¬φ .fst
     f : Sentence → Bool
-    f = fst ∘ totalise fₚ fₚ-total isSetBool
+    f = fst ∘ totalise fₚ fₚ-total
     fₚ≐ : (φ : Sentence) → fₚ φ ≐ f φ
-    fₚ≐ = snd ∘ totalise fₚ fₚ-total isSetBool
+    fₚ≐ = snd ∘ totalise fₚ fₚ-total
     H : f decides ⊢_
     H φ with f φ in α
     ... | true  = →: (λ _ → refl)
@@ -61,7 +61,7 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
       where
       ≐true : fₚ φ ≐ true
       ≐true = subst (fₚ φ ≐_) (eqToPath α) (fₚ≐ φ)
-    ... | false = →: (λ ⊢φ → part.functional (fₚ φ) isSetBool ≐false (≐true ⊢φ))
+    ... | false = →: (λ ⊢φ → ≐-functional (fₚ φ) ≐false (≐true ⊢φ))
                   ←: (λ H → ⊥.rec $ false≢true H)
       where
       ≐true : ⊢ φ → fₚ φ ≐ true

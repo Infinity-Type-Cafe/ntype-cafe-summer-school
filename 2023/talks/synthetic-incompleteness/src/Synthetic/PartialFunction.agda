@@ -1,95 +1,75 @@
 {-# OPTIONS --cubical --safe #-}
+{-# OPTIONS --hidden-argument-puns #-}
 
 module Synthetic.PartialFunction where
 
 open import Cubical.Foundations.Prelude
 open import Cubical.Foundations.Function
 open import Cubical.Foundations.HLevels
-open import Cubical.Foundations.Isomorphism
-open import Cubical.Data.Empty as ⊥
-open import Cubical.Data.Maybe
+open import Cubical.Foundations.Structure
+open import Cubical.Foundations.Univalence
+open import Cubical.Functions.Logic using (⊤; ⊥)
 open import Cubical.Data.Nat
 open import Cubical.Data.Sigma
 open import Cubical.Relation.Nullary
 open import Cubical.HITs.PropositionalTruncation as ∥₁
-open import CubicalExt.Logic.ConstructiveEpsilon
 
 private variable
-  ℓ : Level
+  ℓ ℓ' : Level
   A B : Type ℓ
 
-deterministic : (A → Maybe B) → Type _
-deterministic f = ∀ {n m x y} → f n ≡ just x → f m ≡ just y → x ≡ y
+part : Type ℓ → Type _
+part A = Σ (hProp ℓ-zero) λ P → ⟨ P ⟩ → A
 
-record part (A : Type) : Type where
-  constructor mkPart
-  field
-    eval : ℕ → Maybe A
-    proper : deterministic eval
+defined : part A → Type _
+defined (P , _) = ⟨ P ⟩
 
-  evalTo : A → Type
-  evalTo x = ∃ _ λ k → eval k ≡ just x
+isPropDefined : (x : part A) → isProp (defined x)
+isPropDefined (P , _) = str P
 
-  functional : isSet A → ∀ {x y} → evalTo x → evalTo y → x ≡ y
-  functional Aset = rec2 (Aset _ _)
-    (λ { (_ , Hn) (_ , Hm) → proper Hn Hm })
+value : (xₚ : part A) → defined xₚ → A
+value (_ , f) H = f H
 
-  opaque
-    totalise : isSet A → ∃ _ evalTo → Σ _ evalTo
-    totalise Aset xₚ = σ .snd .fst , ∣ σ .fst , σ .snd .snd ∣₁ where
-      swapevalTo : ∃ _ evalTo → ∃ _ λ k → Σ _ λ x → eval k ≡ just x
-      swapevalTo = ∥₁.rec squash₁ λ (x , ea) → map (λ (n , H) → n , x , H) ea
-      Σ[x] : ℕ → Type
-      Σ[x] n = Σ _ λ x → eval n ≡ just x
-      isSetΣ[x] : ∀ n → isSet (Σ[x] n)
-      isSetΣ[x] _ = isSetΣ Aset λ _ → isProp→isSet (isOfHLevelMaybe 0 (λ _ _ → Aset _ _) _ _)
-      DecΣ[x] : ∀ n → Dec (Σ[x] n)
-      DecΣ[x] n with eval n
-      ... | nothing = no λ (_ , H) → ⊥.rec (¬nothing≡just H)
-      ... | just x = yes (x , refl)
-      σ : Σ _ Σ[x]
-      σ = ε isSetΣ[x] DecΣ[x] (swapevalTo xₚ)
+∅ : part A
+∅ = ⊥ , λ ()
 
-_≐_ : part A → A → Type
-xₚ ≐ x = part.evalTo xₚ x
+wrap : A → part A
+wrap x = ⊤ , λ _ → x
 
-≐-proper : isSet A → (xₚ : part A) {x y : A} → xₚ ≐ x → xₚ ≐ y → x ≡ y
-≐-proper Aset xₚ = rec2 (Aset _ _) λ (n , Hn) (m , Hm) → part.proper xₚ Hn Hm
+_>>=_ : part A → (A → part B) → part B
+(P , f) >>= g = (Σ ⟨ P ⟩ (defined ∘ g ∘ f) , isPropΣ (str P) (isPropDefined ∘ g ∘ f)) ,
+  λ { (p , def) → value (g (f p)) def }
 
-convergent : part A → Type
-convergent xₚ = ∃ _ (xₚ ≐_)
+_≐_ : part A → A → Type _
+xₚ ≐ x = Σ (defined xₚ) λ H → value xₚ H ≡ x
 
-divergent : part A → Type
-divergent xₚ = ∀ x → ¬ xₚ ≐ x
+≐-functional : (xₚ : part A) {x y : A} → xₚ ≐ x → xₚ ≐ y → x ≡ y
+≐-functional (P , f) (p , fp≡x) (q , fq≡y) = sym fp≡x ∙ (cong f (str P p q)) ∙ fq≡y
 
-total : (eval : A → part B) → Type _
-total eval = ∀ x → convergent (eval x)
+undefined : part A → Type _
+undefined xₚ = ∀ x → ¬ xₚ ≐ x
 
-totalise : (eval : A → part B) → total eval → isSet B → (∀ x → Σ _ (eval x ≐_))
-totalise eval H Bset x = part.totalise (eval x) Bset (H x)
+total : (A → part B) → Type _
+total f = ∀ x → defined (f x)
+
+totalise : (f : A → part B) → total f → (∀ x → Σ _ (f x ≐_))
+totalise f H x = value (f x) (H x) , H x , refl
 
 partialise : (A → B) → A → part B
-partialise eval x = mkPart (λ _ → just (eval x)) (λ p q → just-inj _ _ ((sym p) ∙ q))
+partialise f x = wrap (f x)
 
---------------------------------------------------------------------------------
--- sethood of part
+{- h-level of part -}
 
-partΣ : Type → Type
-partΣ A = Σ (ℕ → Maybe A) deterministic
-
-partΣIsoPart : Iso (partΣ A) (part A)
-Iso.fun       partΣIsoPart (eval , p) = mkPart eval p
-Iso.inv       partΣIsoPart xₚ = part.eval xₚ , part.proper xₚ
-Iso.leftInv   partΣIsoPart a = refl
-Iso.rightInv  partΣIsoPart b = refl
-
-partΣ≡Part : partΣ A ≡ part A
-partΣ≡Part = isoToPath partΣIsoPart
-
-isSetPartΣ : isSet A → isSet (partΣ A)
-isSetPartΣ Aset = isSetΣ (isSet→ (isOfHLevelMaybe 0 Aset))
-  λ _ → isSetImplicitΠ λ _ → isSetImplicitΠ λ _ → isSetImplicitΠ λ _ → isSetImplicitΠ
-    λ _ → isSet→ $ isSet→ $ isProp→isSet $ Aset _ _
+isOfHLevelPart : ∀ n → isOfHLevel (suc (suc n)) A → isOfHLevel (suc (suc n)) (part A)
+isOfHLevelPart n lA = isOfHLevelΣ (suc (suc n))
+  (isOfHLevelPlus' 2 isSetHProp) λ _ → isOfHLevelΠ (suc (suc n)) λ _ → lA
 
 isSetPart : isSet A → isSet (part A)
-isSetPart Aset = subst isSet partΣ≡Part (isSetPartΣ Aset)
+isSetPart = isOfHLevelPart 0
+
+isOfHLevel≐ : ∀ n → isOfHLevel (suc (suc n)) A → (xₚ : part A) (x : A) → isOfHLevel (suc n) (xₚ ≐ x)
+isOfHLevel≐ n lA (P , f) x = isOfHLevelΣ (suc n)
+  (isOfHLevelPlus' 1 (str P)) λ _ → lA _ _
+
+isProp≐ : isSet A → (xₚ : part A) (x : A) → isProp (xₚ ≐ x)
+isProp≐ = isOfHLevel≐ 0

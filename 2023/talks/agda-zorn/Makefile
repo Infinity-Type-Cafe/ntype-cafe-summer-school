@@ -13,7 +13,7 @@
 #
 # ============================================================================
 
-DOCS = ../../resources/agda-zorn
+DOCS = ../../../resources/agda-zorn
 SOURCES := $(shell find src -type f -name '*.lagda.md')
 TARGETS := $(addprefix $(DOCS)/,$(subst /,.,$(patsubst src/%.lagda.md,%.html,$(SOURCES))))
 
