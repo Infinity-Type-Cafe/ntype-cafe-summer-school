@@ -37,7 +37,7 @@ docs: $(DOCS)/.nojekyll
 # Literate agda markdown to pandoc markdown
 .SECONDEXPANSION:
 $(DOCS)/%.md: src/$$(subst .,/,%).lagda.md
-	agda --html --html-dir=$(DOCS) --highlight-occurrences --html-highlight=auto "$<"
+	agda-2.6.4 --html --html-dir=$(DOCS) --highlight-occurrences --html-highlight=auto "$<"
 
 # Generalized rule: how to build a .html file from each .md
 # Note: you will need pandoc 2 or greater for this to work
