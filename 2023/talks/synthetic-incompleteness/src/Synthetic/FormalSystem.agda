@@ -23,7 +23,7 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
   field
     ⊢_ : Sentence → Type
     ⊢-isPred : isPredicate ⊢_
-    ⊢-semiDec : semiDecidable ⊢_
+    ⊢-semiDec : Semidecision ⊢_
     consistent : ∀ φ → ⊢ φ → ⊢ (¬ φ) → ⊥
 
   ⊬_ : Sentence → Type
@@ -35,10 +35,10 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
   independent : Type _
   independent = ∀ φ → (⊬ φ) × (⊬ ¬ φ)
 
-  ⊢¬-semiDec : semiDecidable (⊢_ ∘ ¬_)
+  ⊢¬-semiDec : Semidecision (⊢_ ∘ ¬_)
   ⊢¬-semiDec = semiDecReduction (¬_ , (λ _ → ↔-refl)) ⊢-semiDec
 
-  ⊢-⊢¬-sep : separatable (⊢_) (⊢_ ∘ ¬_)
+  ⊢-⊢¬-sep : Separation (⊢_) (⊢_ ∘ ¬_)
   ⊢-⊢¬-sep = semiDec→sep ⊢-isPred (λ _ → ⊢-isPred _) consistent ⊢-semiDec ⊢¬-semiDec
 
   complete→⊢-dec : complete → decidable (⊢_)

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc-markdown-css-theme" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Agda综合哥德尔不完备 (0) 目录</title>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/skylighting-solarized-theme.css" />
+  <script type="text/javascript" src="highlight-hover.js"></script>
+</head>
+<body>
+
+<header>
+<h1 class="title">Agda综合哥德尔不完备 (0) 目录</h1>
+<blockquote class="metadata">
+</blockquote>
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <strong>Contents</strong><label for="contents">⊕</label>
+  <input type="checkbox" id="contents">
+  <ul>
+  <li><a href="#agda综合哥德尔不完备-0-目录" id="toc-agda综合哥德尔不完备-0-目录">Agda综合哥德尔不完备 (0) 目录</a>
+  <ul>
+  <li><a href="#偏函数" id="toc-偏函数">(1) 偏函数</a></li>
+  <li><a href="#递归论的基本概念" id="toc-递归论的基本概念">(2) 递归论的基本概念</a></li>
+  <li><a href="#抽象形式系统" id="toc-抽象形式系统">(3) 抽象形式系统</a></li>
+  <li><a href="#哥德尔不完备定理" id="toc-哥德尔不完备定理">(4) 哥德尔不完备定理</a></li>
+  <li><a href="#注意事项" id="toc-注意事项">注意事项</a></li>
+  </ul></li>
+  </ul>
+</nav>
+
+<main>
+<h1 id="agda综合哥德尔不完备-0-目录">Agda综合哥德尔不完备 (0) 目录</h1>
+<p>(前言)</p>
+<pre class="Agda"><a id="74" class="Symbol">{-#</a> <a id="78" class="Keyword">OPTIONS</a> <a id="86" class="Pragma">--cubical</a> <a id="96" class="Pragma">--safe</a> <a id="103" class="Symbol">#-}</a>
+
+<a id="108" class="Keyword">module</a> <a id="115" href="Synthetic.Everything.html" class="Module">Synthetic.Everything</a> <a id="136" class="Keyword">where</a>
+</pre>
+<h2 id="偏函数">(1) 偏函数</h2>
+<pre class="Agda"><a id="167" class="Keyword">open</a> <a id="172" class="Keyword">import</a> <a id="179" href="Synthetic.PartialFunction.html" class="Module">Synthetic.PartialFunction</a> <a id="205" class="Keyword">public</a>
+</pre>
+<h2 id="递归论的基本概念">(2) 递归论的基本概念</h2>
+<pre class="Agda"><a id="242" class="Keyword">open</a> <a id="247" class="Keyword">import</a> <a id="254" href="Synthetic.Definitions.Base.html" class="Module">Synthetic.Definitions.Base</a> <a id="281" class="Keyword">public</a>
+<a id="288" class="Keyword">open</a> <a id="293" class="Keyword">import</a> <a id="300" href="Synthetic.Definitions.Properties.html" class="Module">Synthetic.Definitions.Properties</a> <a id="333" class="Keyword">public</a>
+</pre>
+<h2 id="抽象形式系统">(3) 抽象形式系统</h2>
+<pre class="Agda"><a id="368" class="Keyword">open</a> <a id="373" class="Keyword">import</a> <a id="380" href="Synthetic.FormalSystem.html" class="Module">Synthetic.FormalSystem</a> <a id="403" class="Keyword">public</a>
+</pre>
+<h2 id="哥德尔不完备定理">(4) 哥德尔不完备定理</h2>
+<pre class="Agda"><a id="440" class="Keyword">open</a> <a id="445" class="Keyword">import</a> <a id="452" href="Synthetic.Incompleteness.html" class="Module">Synthetic.Incompleteness</a> <a id="477" class="Keyword">public</a>
+</pre>
+<h2 id="注意事项">注意事项</h2>
+<p>宇宙层级在本次的形式化中无关紧要, 可以直接无视. 代码中出现宇宙层级参数 <code>ℓ</code> 只是为了让整个形式化可以发生在任意层级.</p>
+</main>
+
+<script>
+;(function() {
+  // Non-essential if user has JavaScript off. Just makes checkboxes look nicer.
+  var selector = '.task-list > li > input[type="checkbox"]';
+  var checkboxes = document.querySelectorAll(selector);
+  Array.from(checkboxes).forEach((checkbox) => {
+    var wasChecked = checkbox.checked;
+    checkbox.disabled = false;
+    checkbox.addEventListener('click', (ev) => {ev.target.checked = wasChecked});
+  });
+})();
+</script>
+</body>
+</html>
