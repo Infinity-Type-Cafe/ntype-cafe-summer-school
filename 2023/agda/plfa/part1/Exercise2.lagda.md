@@ -32,14 +32,6 @@ open import plfa.part1.RelationsLecture
 -- 请将代码写在此处。
 ```
 
-#### 练习 `*-mono-≤` （延伸）
-
-证明乘法对于小于等于是单调的。
-
-```agda
--- 请将代码写在此处。
-```
-
 #### 练习 `o+o≡e` (延伸) {#odd-plus-odd}
 
 证明两个奇数之和为偶数。

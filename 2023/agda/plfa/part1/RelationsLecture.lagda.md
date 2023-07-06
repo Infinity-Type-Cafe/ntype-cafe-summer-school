@@ -37,7 +37,7 @@ open import Data.Nat.Properties using (+-comm; +-identityʳ)
 data _≤_ : ℕ → ℕ → Set where
 
   z≤n : ∀ {n : ℕ}
-      --------
+      -------------
     → zero ≤ n
 
   s≤s : ∀ {m n : ℕ}
@@ -249,31 +249,13 @@ data Total′ : ℕ → ℕ → Set where
 
 ## 单调性
 
-```agda
-+-monoʳ-≤ : ∀ (n p q : ℕ)
-  → p ≤ q
-    -------------
-  → n + p ≤ n + q
-+-monoʳ-≤ zero    p q p≤q  =  p≤q
-+-monoʳ-≤ (suc n) p q p≤q  =  s≤s (+-monoʳ-≤ n p q p≤q)
-```
-
-```agda
-+-monoˡ-≤ : ∀ (m n p : ℕ)
-  → m ≤ n
-    -------------
-  → m + p ≤ n + p
-+-monoˡ-≤ m n p m≤n  rewrite +-comm m p | +-comm n p  = +-monoʳ-≤ p m n m≤n
-```
-
-```agda
 +-mono-≤ : ∀ (m n p q : ℕ)
   → m ≤ n
   → p ≤ q
     -------------
   → m + p ≤ n + q
-+-mono-≤ m n p q m≤n p≤q  =  ≤-trans (+-monoˡ-≤ m n p m≤n) (+-monoʳ-≤ n p q p≤q)
-```
+
+(不讲)
 
 ## 严格不等关系 {#strict-inequality}
 
@@ -336,10 +318,6 @@ import Data.Nat using (_≤_; z≤n; s≤s)
 import Data.Nat.Properties using (≤-refl; ≤-trans; ≤-antisym; ≤-total;
                                   +-monoʳ-≤; +-monoˡ-≤; +-mono-≤)
 ```
-
-在标准库中，`≤-total` 是使用析取定义的（我们将在 [Connectives](/Connectives/) 章节定义）。
-`+-monoʳ-≤`、`+-monoˡ-≤` 和 `+-mono-≤` 的证明方法和本书不同。
-更多的参数是隐式申明的。
 
 ## Unicode
 

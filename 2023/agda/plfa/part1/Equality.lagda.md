@@ -36,7 +36,7 @@ trans : ∀ {A : Set} {x y z : A}
   → y ≡ z
     -----
   → x ≡ z
-trans refl refl  =  refl
+trans refl refl = refl
 ```
 
 ## 合同性和替换性 {#cong}

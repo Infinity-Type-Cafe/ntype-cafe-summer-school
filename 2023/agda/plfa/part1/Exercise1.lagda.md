@@ -46,7 +46,9 @@ open Eq.≡-Reasoning using (begin_; _≡⟨⟩_; step-≡; _∎)
 检查 `3 ^ 4` 是否等于 `81`。
 
 ```agda
--- 请将代码写在此处。
+_^_ : ℕ → ℕ → ℕ
+m ^ zero = 1
+m ^ suc n = m * (m ^ n)
 ```
 
 #### 练习 `∸-example₁` 和 `∸-example₂`（推荐） {#monus-examples}
