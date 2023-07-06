@@ -99,8 +99,11 @@ o- 21:04 CAIMEO 
 | vsc 的 agda-mode 报错 Server initialization failed 咋办 (
 |
 ```
+
 o- 21:04 史豪
-![](./images/agda-1-史豪 21:04.png)
+
+<img src="./images/agda-1-史豪 21:04.png" width="70%">
+
 ```
 |
 o- 21:04 史豪 
@@ -110,8 +113,11 @@ o- 21:05 QDelta 
 | 要先open Data.Nat才能直接用N吧
 |
 ```
+
 o- 21:05 灯夜
-![](./images/agda-1-灯夜 21:05.png)
+
+<img src="images/agda-1-灯夜 21:05.png" width="70%">
+
 ```
 |
 o- 21:05 猫姐姐 
@@ -130,8 +136,11 @@ o- 21:08 pe200012 
 | 符号计算?
 |
 ```
+
 o- 21:08 灯夜 
-![](images/agda-1-灯夜 21:08.png)
+
+<img src="images/agda-1-灯夜 21:08.png" width="70%">
+
 ```
 |
 o- 21:08 灯夜 
@@ -152,9 +161,11 @@ o- 21:11 pe200012 
 o- 21:11 灯夜 
 | 报错截图就是
 |
+o- 21:11 灯夜
 ```
-o- 21:11 灯夜 
-![](images/agda-1-灯夜 21:11.png)
+
+<img src="images/agda-1-灯夜 21:11.png" width="70%">
+
 ```
 |
 o- 21:11 yinfeng 
