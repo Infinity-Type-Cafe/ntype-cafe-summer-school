@@ -1,0 +1,98 @@
+
+| 2023/7/7
+|
+o- 14:00 布丁大魔王 
+| 为什么要过一分?
+|
+o- 14:11 布丁大魔王 
+| 可能有「具有相同引入子」但「具有不同消去子」的两种归纳类型吗?
+|
+o- 14:12 114514 
+| 其实乘积类型就是啊
+|
+o- 14:12 Hoshino 
+| p.1 和 p.2 ?
+|
+o- 14:13 114514 
+| 嗯, 还有 curry 也是一种消去子
+|
+o- 14:59 无懈可击99 
+| 大家有什么问题想问吗
+|
+o- 15:00 周欣 
+| 刚才那个K:(p:x=x)[表情]p=refl_x不合法,是因为x=x不是个type吗?
+|
+o- 15:00 无懈可击99 
+| 不是啊
+|
+o- 15:01 Y2 
+| 是因为x=x没有消去?
+|
+o- 15:03 maplgebra 
+| 因为x=x的元素不只有refl
+|
+o- 15:05 Shreck Ye 
+| module refl where
+| 
+| import Relation.Binary.PropositionalEquality as Eq
+| open Eq using (_[表情]_; refl; cong; sym)
+| 
+| test : {A : Set} {x : A} (p : x [表情] x) [表情] (p [表情] refl)
+| test refl = refl
+|
+o- 15:05 布丁大魔王 
+| 听了,讲了一堆例子
+|
+o- 15:05 Shreck Ye 
+| 这个好像能通过呀
+|
+o- 15:05 布丁大魔王 
+| withoutK
+|
+o- 15:06 Shreck Ye 
+| 哦哦
+|
+o- 15:06 oCaU 
+| {-# OPTIONS --without-K #-}
+|
+o- 15:08 摸 
+| {{a},(a,b}}
+|
+o- 15:08 PC 
+| 依赖函数
+|
+o- 15:11 布丁大魔王 
+| 看成命题啊
+|
+o- 15:20 UDK is Angel 
+| 这个 [0,1] 的思想在 cubical 里面很重要
+|
+o- 15:21 数学主义 
+| Lean的UIP公理,就相当于规定从x到y的道路都定端同伦?
+|
+o- 15:26 史豪 
+| uip是说path x=x的项只有refl
+|
+o- 15:27 数学主义 
+| 这样的uip不就长得像 单连通 吗?
+|
+o- 15:28 数学主义 
+| 好的,谢谢!
+|
+o- 16:04 布丁大魔王 
+| coe是怎么证明的来着?
+|
+o- 16:04 Fain 
+| funext和ua在hott里面是必要的吗
+|
+o- 16:05 maplgebra 
+| coe和transport有什么区别
+|
+o- 16:05 Y2 
+| coe是啥的简写啊
+|
+o- 16:05 Shreck Ye 
+| 这个是不是也叫 Leibniz 相等?
+|
+o- 16:06 无懈可击99 
+| coercion
