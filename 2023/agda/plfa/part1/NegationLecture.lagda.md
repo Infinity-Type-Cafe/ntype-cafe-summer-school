@@ -39,7 +39,7 @@ infix 3 ¬_
   → A
     -----
   → ¬ ¬ A
-¬¬-intro x ¬x = ¬x x
+¬¬-intro a ¬a = ¬a a
 ```
 
 我们无法证明 `¬ ¬ A` 蕴涵 `A`，但可以证明 `¬ ¬ ¬ A` 蕴涵 `¬ A`：
@@ -49,7 +49,7 @@ infix 3 ¬_
   → ¬ ¬ ¬ A
     -------
   → ¬ A
-¬¬¬-elim ¬¬¬x  =  λ x → ¬¬¬x (¬¬-intro x)
+¬¬¬-elim ¬¬¬x = λ x → ¬¬¬x (¬¬-intro x)
 ```
 
 另一个逻辑规则是**换质换位律（contraposition）**，它陈述了若 `A` 蕴涵 `B`，
@@ -65,7 +65,7 @@ contraposition f ¬y x = ¬y (f x)
 
 ```agda
 _≢_ : ∀ {A : Set} → A → A → Set
-x ≢ y  =  ¬ (x ≡ y)
+x ≢ y  = (x ≡ y) → ⊥
 ```
 
 要证明不同的数不相等很简单：
@@ -82,7 +82,7 @@ _ = λ()
 
 ```agda
 peano : ∀ {m : ℕ} → zero ≢ suc m
-peano = λ()
+peano ()
 ```
 
 确实，只有一个 `⊥ → ⊥` 的证明。我们可以用两种方式写出此证明：
@@ -108,11 +108,6 @@ assimilation ¬x ¬x′ = extensionality (λ x → ⊥-elim (¬x x))
 ```
 
 ## 排中律是不可辩驳的
-
-```agda
-postulate
-  em : ∀ {A : Set} → A ⊎ ¬ A
-```
 
 ```agda
 em-irrefutable : ∀ {A : Set} → ¬ ¬ (A ⊎ ¬ A)
@@ -147,6 +142,11 @@ em-irrefutable ¬[A⊎¬A] = ¬[A⊎¬A] (inj₂ (λ a → ¬[A⊎¬A] (inj₁ a
 很高兴能给你 10 亿美元。」
 
 于是恶魔将那个手提箱又还给了他。
+
+```agda
+postulate
+  em : ∀ {A : Set} → A ⊎ ¬ A
+```
 
 ## 标准库
 

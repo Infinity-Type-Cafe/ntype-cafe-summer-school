@@ -37,16 +37,18 @@ data _×_ (A B : Set) : Set where
 
 ```agda
 _ : ℕ × ℕ
-_ = 1 , 2
+_ = 3 , 22
 ```
 
 ```agda
+--fst
 proj₁ : ∀ {A B : Set}
   → A × B
     -----
   → A
-proj₁ (x , y) = x
+proj₁ (x , _) = x
 
+--snd
 proj₂ : ∀ {A B : Set}
   → A × B
     -----
@@ -69,10 +71,12 @@ open _×′_
 ```
 
 ```agda
+--2
 data Bool : Set where
   true  : Bool
   false : Bool
 
+--3
 data Tri : Set where
   aa : Tri
   bb : Tri
@@ -88,12 +92,12 @@ data Tri : Set where
 
 ```agda
 ×-count : Bool × Tri → ℕ
-×-count (true  , aa)  =  1
-×-count (true  , bb)  =  2
-×-count (true  , cc)  =  3
-×-count (false , aa)  =  4
-×-count (false , bb)  =  5
-×-count (false , cc)  =  6
+×-count (true , aa) = 1
+×-count (true , bb) = 2
+×-count (true , cc) = 3
+×-count (false , aa) = 4
+×-count (false , bb) = 5
+×-count (false , cc) = 6
 ```
 
 ×-comm : ∀ {A B : Set} → A × B ≃ B × A

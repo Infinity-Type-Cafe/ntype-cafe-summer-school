@@ -47,6 +47,7 @@ syntax Σ-syntax A (λ x → B) = Σ[ x ∈ A ] B
 
 ```agda
 record Σ′ (A : Set) (B : A → Set) : Set where
+  constructor _,_
   field
     proj₁′ : A
     proj₂′ : B proj₁′
@@ -108,6 +109,8 @@ syntax ∃-syntax (λ x → B) = ∃[ x ] B
     ; to∘from =  λ{ ∀¬xy → refl }
     }
 ```
+
+--∃¬≃¬∀则要排中律
 
 ## 标准库
 

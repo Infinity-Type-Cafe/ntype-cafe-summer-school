@@ -133,6 +133,8 @@ record _⇔_ (A B : Set) : Set where
   field
     to   : A → B
     from : B → A
+
+--(A → B) × (B → A)
 ```
 
 证明等价性是自反、对称和传递的。
@@ -164,11 +166,6 @@ record _⇔_ (A B : Set) : Set where
 为什么 `to` 和 `from` 不能构造一个同构？
 
 #### 练习 `⇔≃×` （推荐）
-
-<!--
-Show that `A ⇔ B` as defined [earlier](/Isomorphism/#iff)
-is isomorphic to `(A → B) × (B → A)`.
--->
 
 证明[之前](/Isomorphism/#iff)定义的 `A ⇔ B` 与 `(A → B) × (B → A)` 同构。
 
