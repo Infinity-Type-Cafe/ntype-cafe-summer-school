@@ -200,7 +200,7 @@ infixl 7  _*_
 本章中类似的定义可在标准库中找到：
 
 ```agda
-import Data.Nat using (ℕ; zero; suc; _+_; _*_; _^_; _∸_)
+--import Data.Nat using (ℕ; zero; suc; _+_; _*_; _^_; _∸_)
 ```
 
 ## Unicode
