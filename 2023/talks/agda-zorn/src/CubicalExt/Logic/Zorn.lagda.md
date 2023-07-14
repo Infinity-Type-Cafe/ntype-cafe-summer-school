@@ -1,8 +1,15 @@
 ---
 title: Agda佐恩引理
+zhihu-tags: Agda, 数理逻辑
+zhihu-url: https://zhuanlan.zhihu.com/p/629641633
 ---
 
 # Agda佐恩引理
+
+> 交流Q群: 893531731  
+> 本文源码: [Zorn.lagda.md](https://github.com/choukh/agda-flypitch/blob/main/src/CubicalExt/Logic/Zorn.lagda.md)  
+> 高亮渲染: [Zorn.html](https://choukh.github.io/agda-flypitch/CubicalExt.Logic.Zorn.html)  
+> 改编自: Coq [ZornsLemma.v](https://github.com/coq-community/zorns-lemma/blob/master/ZornsLemma.v)  
 
 ## 前言
 
@@ -20,10 +27,10 @@ module CubicalExt.Logic.Zorn where
 首先, 我们需要导入 Cubical 标准库模块. 同伦类型论 (乃至其立方类型论实现) 以其对"相等"这一基础概念的复杂诠释而广为人知. 在某些情况下 (如单集的定义中), 我们将使用立方类型论的 `Id` 类型, 因其可以便捷地进行模式匹配. 然而, 在大部分情况下, 我们更倾向于使用路径 `Path` 类型.
 
 ```agda
-open import Cubical.Core.Id using (reflId)
-open import Cubical.Foundations.Prelude hiding (_∧_; _∨_)
+open import Cubical.Foundations.Prelude hiding (_∧_; _∨_; refl)
 open import Cubical.Foundations.HLevels
 open import Cubical.Foundations.Isomorphism using (Iso)
+open import Cubical.Data.Equality using (refl)
 open import Cubical.Data.Empty as ⊥ using (⊥; isProp⊥)
 open import Cubical.Data.Sigma using (∃-syntax; ΣPathP; PathPΣ)
 import Cubical.Data.Sum as ⊎
@@ -314,9 +321,9 @@ module Chain ⦃ em : ∀ {ℓ} → EM ℓ ⦄ {U : Type u} (_≤_ : Rel U U r) 
     isChainA' : ≤.isChain A'
     isChainA' x y x∈ y∈ = rec2 squash₁
       (λ{ (⊎.inl x∈A)    (⊎.inl y∈A)    → isChainA x y x∈A y∈A
-        ; (⊎.inl x∈A)    (⊎.inr reflId) → inl $ ≤-trans x ub y (ubhood x x∈A) ub≤
-        ; (⊎.inr reflId) (⊎.inl y∈A)    → inr $ ≤-trans y ub x (ubhood y y∈A) ub≤
-        ; (⊎.inr reflId) (⊎.inr reflId) → inl $ ≤-refl x })
+        ; (⊎.inl x∈A)    (⊎.inr refl) → inl $ ≤-trans x ub y (ubhood x x∈A) ub≤
+        ; (⊎.inr refl) (⊎.inl y∈A)    → inr $ ≤-trans y ub x (ubhood y y∈A) ub≤
+        ; (⊎.inr refl) (⊎.inr refl) → inl $ ≤-refl x })
       (unresize x∈) (unresize y∈)
 ```
 
@@ -332,7 +339,7 @@ module Chain ⦃ em : ∀ {ℓ} → EM ℓ ⦄ {U : Type u} (_≤_ : Rel U U r) 
     a≢a' : ¬ a ≡ a'
     a≢a' eq = let eq = PathPΣ eq .fst in
       ub≢ $ ≤-antisym ub ub' ub≤ $ ubhood ub' $
-      subst (ub' ∈_) (sym eq) $ resize $ inr reflId
+      subst (ub' ∈_) (sym eq) $ resize $ inr refl
 ```
 
 最后, 我们要说明 `a` 与 `a'` 之间没有其他元素. 给定 `b` 在 `a` 与 `a'` 之间, 我们说明 `b` 要么等于 `a`, 要么等于 `a'`. 将 `b` 分解为 `U` 的子集 `B` 以及它是 ≤-链的证据 `isChainB`. 现在, 用排中律讨论 `ub'` 是否在 `B` 中.
@@ -349,7 +356,7 @@ module Chain ⦃ em : ∀ {ℓ} → EM ℓ ⦄ {U : Type u} (_≤_ : Rel U U r) 
       where A'⊆B : A' ⊆ B
             A'⊆B x∈A' = rec (∈-isProp B _)
               (λ{ (⊎.inl x∈A)    → A⊆B x∈A
-                ; (⊎.inr reflId) → ub'∈B })
+                ; (⊎.inr refl) → ub'∈B })
               (unresize x∈A')
 ```
 
@@ -360,7 +367,7 @@ module Chain ⦃ em : ∀ {ℓ} → EM ℓ ⦄ {U : Type u} (_≤_ : Rel U U r) 
       where B⊆A : B ⊆ A
             B⊆A x∈B = rec (∈-isProp A _)
               (λ{ (⊎.inl x∈A)    → x∈A
-                ; (⊎.inr reflId) → ⊥.rec $ ub'∉B x∈B })
+                ; (⊎.inr refl) → ⊥.rec $ ub'∉B x∈B })
               (unresize (B⊆A' x∈B))
 ```
 

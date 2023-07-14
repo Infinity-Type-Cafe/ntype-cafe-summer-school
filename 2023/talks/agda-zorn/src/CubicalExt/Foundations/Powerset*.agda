@@ -5,8 +5,6 @@
 
 module CubicalExt.Foundations.Powerset* where
 
-open import Cubical.Core.Id renaming (_≡_ to _≡ⁱᵈ_)
-open import CubicalExt.Foundations.Id using (path≡Id-termLevel; idToPath; pathToId; ap)
 open import Cubical.Foundations.Prelude
 open import Cubical.Foundations.Equiv
 open import Cubical.Foundations.HLevels
@@ -15,6 +13,9 @@ open import Cubical.Foundations.Structure
 open import Cubical.Foundations.Univalence using (hPropExt)
 open import Cubical.Foundations.Function
 open import Cubical.Functions.Logic hiding (¬_)
+open import Cubical.Data.Equality
+  using (ap; Path≡Eq; pathToEq; eqToPath)
+  renaming (_≡_ to _≣_; refl to reflEq; transport to substEq)
 open import Cubical.Data.Empty as ⊥ using (⊥*; isProp⊥*)
 open import Cubical.Data.Unit using (Unit*; isPropUnit*)
 open import Cubical.Data.Sigma
@@ -144,7 +145,7 @@ private variable
 -- Image set
 
 _⟦_⟧ : (X → Y) → 𝒫 X ℓ → 𝒫 Y _
-f ⟦ A ⟧ = λ y → (∃[ x ∈ _ ] (x ∈ A) × (y ≡ⁱᵈ f x)) , squash₁
+f ⟦ A ⟧ = λ y → (∃[ x ∈ _ ] (x ∈ A) × (y ≣ f x)) , squash₁
 
 f⟦∅⟧≡∅ : f ⟦ ∅* {ℓ = ℓ} ⟧ ≡ ∅*
 f⟦∅⟧≡∅ = ⊆-extensionality _ _ $ (rec (∈-isProp _ _) λ ()) , λ ()
@@ -170,7 +171,7 @@ module SetBased (Xset : isSet X) where
   -- Singleton set
 
   ｛_｝ : X → 𝒫 X _
-  ｛ x ｝ = λ y → (x ≡ⁱᵈ y) , subst isProp path≡Id-termLevel (Xset x y)
+  ｛ x ｝ y = (x ≣ y) , substEq isProp Path≡Eq (Xset x y)
 
   _⟦｛_｝⟧ : (f : X → Y) (x : X) → 𝒫 Y _
   f ⟦｛ x ｝⟧ = f ⟦ ｛ x ｝ ⟧
@@ -196,17 +197,17 @@ module SetBased2 (Xset : isSet X) (Yset : isSet Y) where
   open SetBased Yset using () renaming (｛_｝ to ｛_｝₂; _⟦｛_｝⟧ to _⟦｛_｝⟧₂; _⨭_ to _⨭₂_) public
 
   ⟦｛｝⟧⊆ : f ⟦｛ x ｝⟧₁ ⊆ ｛ f x ｝₂
-  ⟦｛｝⟧⊆ = rec (∈-isProp _ _) λ { (x , reflId , reflId) → reflId }
+  ⟦｛｝⟧⊆ = rec (∈-isProp _ _) λ { (x , reflEq , reflEq) → reflEq }
 
   ⊆⟦｛｝⟧ : ｛ f x ｝₂ ⊆ f ⟦｛ x ｝⟧₁
-  ⊆⟦｛｝⟧ reflId = ∣ _ , reflId , reflId ∣₁
+  ⊆⟦｛｝⟧ reflEq = ∣ _ , reflEq , reflEq ∣₁
 
   ⟦⨭⟧⊆ : f ⟦ A ⨭₁ x ⟧ ⊆ f ⟦ A ⟧ ⨭₂ f x
   ⟦⨭⟧⊆ {f = f} {A = A} = rec (∈-isProp _ _)
-    λ { (y , y∈⨭ , reflId) →
+    λ { (y , y∈⨭ , reflEq) →
         rec (∈-isProp (f ⟦ A ⟧ ⨭₂ _) _) (
-          λ { (⊎.inl y∈A) → inl ∣ y , y∈A , reflId ∣₁
-            ; (⊎.inr reflId) → inr reflId
+          λ { (⊎.inl y∈A) → inl ∣ y , y∈A , reflEq ∣₁
+            ; (⊎.inr reflEq) → inr reflEq
             })
           y∈⨭
       }
@@ -215,9 +216,9 @@ module SetBased2 (Xset : isSet X) (Yset : isSet Y) where
   ⊆⟦⨭⟧ {f = f} {A = A} = rec (∈-isProp _ _)
     λ { (⊎.inl y∈f) →
         rec (∈-isProp (f ⟦ A ⨭₁ _ ⟧) _) (
-          λ { (y , y∈A , reflId) → ∣ y , inl y∈A , reflId ∣₁ })
+          λ { (y , y∈A , reflEq) → ∣ y , inl y∈A , reflEq ∣₁ })
           y∈f
-      ; (⊎.inr reflId) → ∣ _ , inr reflId , reflId ∣₁
+      ; (⊎.inr reflEq) → ∣ _ , inr reflEq , reflEq ∣₁
       }
 
   ⟦⨭⟧≡ : f ⟦ A ⨭₁ x ⟧ ≡ f ⟦ A ⟧ ⨭₂ f x
@@ -231,12 +232,12 @@ module Preimage {X Y : Type ℓ} (Xset : isSet X) (Yset : isSet Y) where
       ⊆⁻¹⟦⨭⟧ : f ⁻¹⟦ A ⟧ ⨭₁ x ⊆ f ⁻¹⟦ A ⨭₂ f x ⟧
       ⊆⁻¹⟦⨭⟧ = rec (∈-isProp _ _)
         λ { (⊎.inl fx∈A) → inl fx∈A
-          ; (⊎.inr reflId) → inr $ ap f reflId }
+          ; (⊎.inr reflEq) → inr $ ap f reflEq }
 
       ⁻¹⟦⨭⟧⊆ : f ⁻¹⟦ A ⨭₂ f x ⟧ ⊆ f ⁻¹⟦ A ⟧ ⨭₁ x
       ⁻¹⟦⨭⟧⊆ = rec (∈-isProp _ _)
         λ { (⊎.inl fx∈A) → inl fx∈A
-          ; (⊎.inr fx≡fy) → inr $ pathToId $ inj _ _ $ idToPath fx≡fy }
+          ; (⊎.inr fx≡fy) → inr $ pathToEq $ inj _ _ $ eqToPath fx≡fy }
 
       ⁻¹⟦⨭⟧≡ : f ⁻¹⟦ A ⨭₂ f x ⟧ ≡ f ⁻¹⟦ A ⟧ ⨭₁ x
       ⁻¹⟦⨭⟧≡ = ⊆-extensionality _ _ $ ⁻¹⟦⨭⟧⊆ , ⊆⁻¹⟦⨭⟧
@@ -247,4 +248,4 @@ module Preimage {X Y : Type ℓ} (Xset : isSet X) (Yset : isSet Y) where
         helper : f ⁻¹⟦ A ⨭₂ y ⟧ ⊆ f ⁻¹⟦ A ⟧
         helper {x} = rec (∈-isProp _ _)
           λ { (⊎.inl fx∈A) → fx∈A
-            ; (⊎.inr reflId) → ⊥.rec $ ∀¬ x refl }
+            ; (⊎.inr reflEq) → ⊥.rec $ ∀¬ x refl }

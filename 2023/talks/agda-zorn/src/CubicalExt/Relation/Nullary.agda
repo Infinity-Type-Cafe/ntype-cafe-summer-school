@@ -2,6 +2,7 @@
 
 module CubicalExt.Relation.Nullary where
 
+open import Cubical.Foundations.Prelude hiding (_≡_)
 open import Cubical.Data.Equality
 open import Cubical.Foundations.Function using (_∘_)
 open import Cubical.Relation.Nullary public
