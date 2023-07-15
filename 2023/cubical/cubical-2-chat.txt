@@ -1,0 +1,137 @@
+
+| 2023/7/14
+|
+o- 20:01 EmberEdison 
+| 看得见
+|
+o- 20:23 5eqn 
+| hcom 可以理解成扩张类型的构造规则吗
+|
+o- 20:24 5eqn 
+| 嗯嗯
+|
+o- 20:24 5eqn 
+| 感谢
+|
+o- 20:33 Wtz_LASR 
+| 扩张类型
+|
+o- 20:46 Wtz_LASR 
+| 我超
+|
+o- 20:46 Wtz_LASR 
+| unicode消失术
+|
+o- 20:46 EmberEdison 
+| 乐
+|
+o- 20:46 5eqn 
+| 难绷
+|
+o- 20:46 EmberEdison 
+| 难蚌
+|
+o- 20:46 面皮 
+| 笑死
+|
+o- 20:47 Shreck Ye 
+| xs
+|
+o- 20:47 Wtz_LASR 
+| 非常好microsoft edge pdf编辑
+|
+o- 20:47 5eqn 
+| 逆天
+|
+o- 20:47 小简( 
+| xs
+|
+o- 20:47 toaster 
+| xs
+|
+o- 20:52 EmberEdison 
+| 很可惜直到现在依旧是一个巨坑
+|
+o- 21:07 EmberEdison 
+| 蚌
+|
+o- 21:17 Hoshino 
+| 那 `i = 0` 的 A 是不是应该换成 B?
+|
+o- 21:21 Wtz_LASR 
+| lmao
+|
+o- 21:23 Wtz_LASR 
+| 拷打!
+|
+o- 21:28 kang 
+| 那个delta约化是指什么
+|
+o- 21:29 kang 
+| 我看你的其他讲义里写的
+|
+o- 21:29 Tesla Zhang 
+| Int
+|
+o- 21:30 kang 
+| 喔
+|
+o- 21:30 Wtz_LASR 
+| 我记得就是内置函数()
+|
+o- 21:31 Hoshino 
+| 如果把 hcom 返回的路径定义为 墙壁 - 底面 - 墙壁 的路径会有什么问题吗
+|
+o- 21:34 Hoshino 
+| ok
+|
+o- 21:34 Y2 
+| 这些东西可以证 J 规则吗
+|
+o- 21:37 Hoshino 
+| 怎么不是 Aya(
+|
+o- 21:38 kang 
+| 是吗
+|
+o- 21:38 kang 
+| 赶紧昨晚
+|
+o- 21:38 kang 
+| 做完
+|
+o- 21:38 Hoshino 
+| 赶紧做完
+|
+o- 21:40 kang 
+| 没懂
+|
+o- 21:41 kang 
+| 什么是unfolding
+|
+o- 21:41 Tesla Zhang 
+| +-comm a b
+|
+o- 21:41 Tesla Zhang 
+| +-comm (suc a) (suc b)
+|
+o- 21:41 Tesla Zhang 
+| suc (+-comm a (suc b))
+|
+o- 21:42 Tesla Zhang 
+| intLoop 10
+|
+o- 21:43 Tesla Zhang 
+| intLoop |- intLoop = hcom hcom...
+|
+o- 21:43 Tesla Zhang 
+| intLoop : { Z -> OmegaS1 | intLoop -> hcom hcom hcom }
+|
+o- 21:44 kang 
+| 喔
+|
+o- 21:44 kang 
+| 额
+|
+o- 21:45 kang 
+| good

@@ -1,0 +1,50 @@
+
+| 2023/7/15
+|
+o- 14:00 Hoshino 
+| keyi
+|
+o- 14:00 PC 
+| 1
+|
+o- 14:01 LXL 
+| 应该是刚才群主点了~
+|
+o- 14:01 史豪 
+| wo dian l
+|
+o- 14:15 LXL 
+| (或许可以把右边的幻灯片布局编辑的界面关掉?因为目前的情况,生成录像的时候可能字体显示得比较小,然后可能会稍微有点糊)
+|
+o- 15:02 LXL 
+| 能重新看一眼suc的定义么(以及suc[表情]sup那里)
+|
+o- 15:04 LXL 
+| 能听到
+|
+o- 15:04 LXL 
+| 证矛盾那里(以及定义)
+|
+o- 15:05 LXL 
+| 好的。。谢谢。。然后能否再说说矛盾那里
+|
+o- 15:07 LXL 
+| 噢~能否看一眼那个suc[表情]sup的证明
+|
+o- 15:07 LXL 
+| (或者我去看完整讲义好了)
+|
+o- 15:10 LXL 
+| 非常感谢~我应该明白思路了~
+|
+o- 15:11 Fain 
+| 想问下为什么一定要isSet
+|
+o- 15:11 oCaU 
+| https://github.com/Infinity-Type-Cafe/ntype-cafe-summer-school/blob/main/2023/talks/agda-zorn/src/CubicalExt/Logic/Zorn.lagda.md
+|
+o- 15:12 Fain 
+| 每个地方吧
+|
+o- 15:18 Fain 
+| 这个解释接受了,非常感谢~

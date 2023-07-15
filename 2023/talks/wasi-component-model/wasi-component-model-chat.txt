@@ -1,0 +1,8 @@
+
+| 2023/7/14
+|
+o- 14:43 Shreck Ye 
+| 有 algebraic effects 的函数是 pure 的吗?
+|
+o- 14:44 Wtz_LASR 
+| 没有effect就是pure的吧,我记得koka里面还有个total好像是pure加上允许抛出异常
