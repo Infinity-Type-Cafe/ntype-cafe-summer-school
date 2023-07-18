@@ -1,0 +1,77 @@
+
+| 2023/7/16
+|
+o- 19:55 Wtz_LASR 
+| 能听到
+|
+o- 19:55 Wtz_LASR 
+| 
+|
+o- 19:55 Wtz_LASR 
+| 我超
+|
+o- 19:55 qy 
+| 听得到
+|
+o- 19:55 Wtz_LASR 
+| 看得到
+|
+o- 19:55 qy 
+| 看得到
+|
+o- 19:56 Wtz_LASR 
+| ml结尾的
+|
+o- 19:56 Wtz_LASR 
+| 是OCaml吗
+|
+o- 19:56 kokic 
+| shide
+|
+o- 19:57 Wtz_LASR 
+| 呜呜呜没用过
+|
+o- 19:57 kokic 
+| 不影响
+|
+o- 20:00 qy 
+| yep
+|
+o- 20:14 CS 
+| 不用de burijn index嘛
+|
+o- 21:12 Wtz_LASR 
+| 老师能写个de brujin index的版本吗
+|
+o- 21:12 5eqn 
+| 同求
+|
+o- 21:13 Trebor 
+| 可以先给人介绍dbi是啥(
+|
+o- 21:13 5eqn 
+| 我个人想 norm by eval
+|
+o- 21:13 Wtz_LASR 
+| 先写nbe吧()
+|
+o- 21:13 Wtz_LASR 
+| 时间够再整subst
+|
+o- 21:34 CS 
+| 请问nbe有没有不用HOAS的写法?
+|
+o- 21:38 CS 
+| 好,谢谢
+|
+o- 21:38 5eqn 
+| 能否大致举例一下 expr 用 dbi 的好处
+|
+o- 21:40 5eqn 
+| 感谢
+|
+o- 21:46 kang 
+| 有没有手把手教写inductive type和pattern matching的课[表情]
+|
+o- 21:47 5eqn 
+| 同求

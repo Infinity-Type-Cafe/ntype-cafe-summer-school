@@ -1,0 +1,161 @@
+
+| 2023/7/16
+|
+o- 13:47 Anqur 
+| 好耶
+|
+o- 14:00 Hoshino 
+| Check failed.
+|
+o- 14:00 Wtz_LASR 
+| 能听到
+|
+o- 14:00 Wtz_LASR 
+| ?
+|
+o- 14:00 Anqur 
+| CI build failed in 1m33s
+|
+o- 14:00 Wtz_LASR 
+| rd100 = 95, san check failed
+|
+o- 14:01 Wtz_LASR 
+| golang是吧
+|
+o- 14:02 Wtz_LASR 
+| 又是他
+|
+o- 14:02 Wtz_LASR 
+| .jpg
+|
+o- 14:07 Wtz_LASR 
+| 这是idris 2用的那个吗
+|
+o- 14:22 Anillc 
+| 现代汇编:js
+|
+o- 14:22 Wtz_LASR 
+| 不是WASM不是WASM?
+|
+o- 14:22 Wtz_LASR 
+| 草
+|
+o- 14:23 Wtz_LASR 
+| 前端比系统那边卷多了
+|
+o- 14:23 kokic 
+| 不矛盾, wasm 是和 js 一起用的 )
+|
+o- 14:23 Wtz_LASR 
+| true
+|
+o- 14:25 Wtz_LASR 
+| 社区支持啦()
+|
+o- 14:25 Trebor 
+| 降低心智负担*
+|
+o- 14:27 Wtz_LASR 
+| 草
+|
+o- 14:28 Wtz_LASR 
+| scala的singleton type
+|
+o- 14:28 Scarborough_Coral 
+| tag union
+|
+o- 14:29 kokic 
+| 可以做一点, 但不是很多, 比如 json parser
+|
+o- 14:31 kokic 
+| 不过 js 的闭包严重缺少优化, 数量一多就会影响性能
+|
+o- 14:32 Anqur 
+| extension-based row poly
+|
+o- 14:32 Anqur 
+| field extension
+|
+o- 14:33 Anqur 
+| record concatenation based
+|
+o- 14:51 Wtz_LASR 
+| 我觉得更多是能让更多人贡献代码吧()
+|
+o- 14:54 Wtz_LASR 
+| AK叠()
+|
+o- 14:59 Anqur 
+| 忽然结束
+|
+o- 14:59 kokic 
+| well
+|
+o- 14:59 Anqur 
+| well
+|
+o- 14:59 Trebor 
+| 有问题可以现在问
+|
+o- 14:59 Wtz_LASR 
+| 非常好演讲,爱来自中国
+|
+o- 14:59 Shreck Ye 
+| RowScript 的 concat 如果有重复的字段怎么解决呢?
+|
+o- 14:59 Anqur 
+| 唉
+|
+o- 14:59 Wtz_LASR 
+| 覆盖
+|
+o- 14:59 Anqur 
+| 直接覆盖
+|
+o- 14:59 Anqur 
+| simpe rows
+|
+o- 14:59 Shreck Ye 
+| 取前者吗?
+|
+o- 14:59 Shreck Ye 
+| 哦哦谢谢
+|
+o- 15:00 QDelta 
+| 没有交换律,坏
+|
+o- 15:00 Wtz_LASR 
+| 感觉甚至可以隐式保存起来
+|
+o- 15:00 Wtz_LASR 
+| 然后到时候用特殊语法拿出来
+|
+o- 15:01 Anqur 
+| simple rows (覆盖), scoped records
+|
+o- 15:01 Shreck Ye 
+| dependent pattern matching 的算法参考哪里比较好呢?如果没有 type dependent on value,比如只有 Haskell 那种 GADT,算法会简单一些吗?
+|
+o- 15:01 QDelta 
+| rowscript编译到javascript的时候,DT部分是怎么处理的?
+|
+o- 15:05 QDelta 
+| 如果我想让U依赖于T,会怎么样?
+|
+o- 15:06 QDelta 
+| Idris2应该实用multiplicity保证
+|
+o- 15:07 QDelta 
+| 感谢
+|
+o- 15:08 Anqur 
+| 好耶
+|
+o- 15:09 Anqur 
+| 886
+|
+o- 15:09 Shreck Ye 
+| 谢谢讲师
+|
+o- 15:09 Anqur 
+| mua

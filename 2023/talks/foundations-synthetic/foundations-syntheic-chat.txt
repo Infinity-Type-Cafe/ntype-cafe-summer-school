@@ -1,0 +1,112 @@
+| 2023/7/17
+|
+o- 14:05 EmberEdison 
+| 可以翻译成基本原子
+|
+o- 14:17 Tesla Zhang 
+| 突然想起 Coq 里面 = 的构造子叫 eq_refl
+|
+o- 14:18 Tesla Zhang 
+| 读作 new pearl
+|
+o- 14:28 JOJO 
+| 好
+|
+o- 14:28 Tesla Zhang 
+| arend-lib 差不多就是 HoTT+AC
+|
+o- 14:30 kokic 
+| ???
+|
+o- 14:34 Tesla Zhang 
+| Q μ 累 T5
+|
+o- 14:37 EmberEdison 
+| 很难想象HoTT的ZFC对应,,,怕不是要将外延公理踢了
+|
+o- 14:39 Tesla Zhang 
+| EuroProofNet 的
+|
+o- 14:40 EmberEdison 
+| 不用 Tarski–Grothendieck 公理怎么手动构造?不能吧
+|
+o- 14:41 EmberEdison 
+| Agda 的实数不能和 Coq 的实数是一回事吧,Agda 的实数是直谓的
+|
+o- 14:43 Tesla Zhang 
+| 有的时候会因为职位的问题导致定义出来的东西本身 level 变高之类的
+|
+o- 14:43 Tesla Zhang 
+| 当然我觉得实数没有这个问题
+|
+o- 14:45 EmberEdison 
+| 你不做 Without - LEM 确实问题不大
+|
+o- 14:51 Tesla Zhang 
+| 写代码也得搞立方体
+|
+o- 14:51 Tesla Zhang 
+| 悲剧啊!
+|
+o- 14:56 Tesla Zhang 
+| S 能给定义吗
+|
+o- 15:00 JOJO 
+| 现在有综合(inf,1)-cat理论了吗?
+|
+o- 15:02 Tesla Zhang 
+| exciting
+|
+o- 15:03 Tesla Zhang 
+| 就是指针
+|
+o- 15:04 toaster 
+| 看来学物理的人用数学时不太严谨的操作可能可以用综合数学去严格化?
+|
+o- 15:04 周欣 
+| 综合物理!
+|
+o- 15:06 Tesla Zhang 
+| Riehl & Shulman
+|
+o- 15:07 kang 
+| 其实你只需要把所有真命题都加进公理
+|
+o- 15:07 kang 
+| 就能做一切综合数学了
+|
+o- 15:09 JOJO 
+| mathlib里证明好了的命题在lean里都能当公理用吗?
+|
+o- 15:09 Tesla Zhang 
+| 可以
+|
+o- 15:10 Tesla Zhang 
+| 好好吃
+|
+o- 15:10 Tesla Zhang 
+| 吃胖胖
+|
+o- 15:10 啊关 
+| 吃胖胖
+|
+o- 15:10 周欣 
+| 吃胖胖
+|
+o- 15:10 Tesla Zhang 
+| 录了
+|
+o- 15:11 kang 
+| 这个表情是怎么发出来的
+|
+o- 15:11 Tesla Zhang 
+| 怎么发的
+|
+o- 15:11 Tesla Zhang 
+| 我怎么没找到按钮
+|
+o- 15:11 kang 
+| 原来还有这个功能
+|
+o- 15:11 kang 
+| 在 更多 里面

@@ -1,0 +1,65 @@
+
+| 2023/7/15
+|
+o- 20:03 LXL 
+| 好像没开共享~
+|
+o- 20:03 Wtz_LASR 
+| coe r~>s
+|
+o- 20:03 数学主义 
+| 我也看不到共享
+|
+o- 20:03 Shreck Ye 
+| 看不到屏幕
+|
+o- 20:26 Hoshino 
+| 怎么还有 IO
+|
+o- 20:26 Wtz_LASR 
+| haskell啦
+|
+o- 20:30 Wtz_LASR 
+| ?
+|
+o- 20:52 Hoshino 
+| `i = 0` 对应的是 `¬ isOne(i)` 吗
+|
+o- 20:53 Hoshino 
+| oo
+|
+o- 21:08 kang 
+| why
+|
+o- 21:08 kang 
+| 怎么会不稳定
+|
+o- 21:09 kang 
+| why
+|
+o- 21:09 kang 
+| 不稳定不可能做成类型了吧
+|
+o- 21:09 kang 
+| 是啊 这为什么不稳定
+|
+o- 21:10 kang 
+| 你那个不叫不稳定
+|
+o- 21:10 kang 
+| 是说代换可能会把normal form变成可以reduce的东西
+|
+o- 21:11 kang 
+| 不是 稳定是说类型论的一切规则都和代换交换
+|
+o- 21:12 kang 
+| 啊?
+|
+o- 21:12 kang 
+| 你是说M也得代换呗
+|
+o- 21:12 kang 
+| 好吧[表情]
+|
+o- 21:15 kang 
+| good
