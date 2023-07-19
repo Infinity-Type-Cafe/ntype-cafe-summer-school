@@ -1,8 +1,8 @@
 ---
-title: Agda综合哥德尔不完备 (1) 偏函数
+title: 偏函数
 ---
 
-# Agda综合哥德尔不完备 (1) 偏函数
+# 偏函数
 
 ```agda
 {-# OPTIONS --cubical --safe #-}

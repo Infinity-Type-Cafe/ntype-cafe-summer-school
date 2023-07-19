@@ -13,9 +13,10 @@ open import Cubical.Data.Nat
 open import Cubical.Relation.Nullary
 open import Cubical.HITs.PropositionalTruncation as ∥₁
 
-module _ {ℓ} {Sentence : Type ℓ} {~_ : Sentence → Sentence} (FS : FormalSystem Sentence ~_)
-  {K : ℕ → Type} (predK : isPredicate K) (undec : ¬ decidable K) where
-  open FormalSystem FS using (⊢_)
+module _ {ℓ ℓ′}
+  {Sentence : Type ℓ} {~_ : Sentence → Sentence} (ℱ : FormalSystem Sentence ~_)
+  {K : ℕ → Type ℓ′} (predK : isPredicate K) (undec : ¬ decidable K) where
+  open FormalSystem ℱ using (⊢_)
 
-  Gödel’sIncompleteness : FS represents K → ¬ complete FS
+  Gödel’sIncompleteness : ℱ represents K → ¬ complete ℱ
   Gödel’sIncompleteness repr compl = undec $ com→repr→dec compl predK (repr .snd)
