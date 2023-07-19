@@ -24,7 +24,7 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
     ⊢_ : Sentence → Type
     ⊢-isPred : isPredicate ⊢_
     ⊢-semiDec : Semidecision ⊢_
-    consistent : ∀ φ → ⊢ φ → ⊢ (¬ φ) → ⊥
+    consistent : ∀ φ → ⊢ φ → ⊢ ¬ φ → ⊥
 
   complete : Type _
   complete = ∀ φ → ∥ (⊢ φ) ⊎ (⊢ ¬ φ) ∥₁
@@ -84,30 +84,30 @@ module _ {ℓₛ : Level} {Sentence : Type ℓₛ} {¬_ : Sentence → Sentence}
   ⊑-refl : {ℱ : Fml} → ℱ ⊑ ℱ
   ⊑-refl _ = idfun _
 
-  _represents_by_ : Fml → (A → Type ℓ) → (A → Sentence) → Type _
-  ℱ represents N by fᵣ = fᵣ reducts N to (ℱ ⊢_)
+  _represents⟨_⟩_ : Fml → (A → Sentence) → (A → Type ℓ) → Type _
+  ℱ represents⟨ fᵣ ⟩ N = fᵣ reducts N to (ℱ ⊢_)
 
   _represents_ : Fml → (A → Type ℓ) → Type _
   ℱ represents N = N ⪯ (ℱ ⊢_)
 
-  _soundFor_by_ : Fml → (A → Type ℓ) → (A → Sentence) → Type _
-  ℱ soundFor N by fᵣ = ∀ n → ℱ ⊢ (fᵣ n) → N n
+  _soundFor⟨_⟩_ : Fml → (A → Sentence) → (A → Type ℓ) → Type _
+  ℱ soundFor⟨ fᵣ ⟩ N = ∀ n → ℱ ⊢ (fᵣ n) → N n
 
   _soundFor_ : Fml → (A → Type ℓ) → Type _
-  ℱ soundFor N = Σ _ λ fᵣ → ℱ soundFor N by fᵣ
+  ℱ soundFor N = Σ _ λ fᵣ → ℱ soundFor⟨ fᵣ ⟩ N
 
   represent→sound : ℱ represents B → ℱ soundFor B
   represent→sound (fᵣ , H) = fᵣ , λ n → H n .from
 
   ⊑-⊢dec→repr→dec : ℱ₁ ⊑ ℱ₂ → decidable (ℱ₂ ⊢_) → isPredicate B →
-    ℱ₁ represents B by fᵣ → ℱ₂ soundFor B by fᵣ → decidable B
+    ℱ₁ represents⟨ fᵣ ⟩ B → ℱ₂ soundFor⟨ fᵣ ⟩ B → decidable B
   ⊑-⊢dec→repr→dec {fᵣ} ext (fᵈ , Hᵈ) pred H₁ H₂ = fᵈ ∘ fᵣ , λ n →
     →: (λ H → Hᵈ _ .to $ ext _ $ H₁ _ .to H)
     ←: λ H → H₂ n $ Hᵈ _ .from H
 
   ⊑-com→repr→dec : ℱ₁ ⊑ ℱ₂ → complete ℱ₂ → isPredicate B →
-    ℱ₁ represents B by fᵣ → ℱ₂ soundFor B by fᵣ → decidable B
+    ℱ₁ represents⟨ fᵣ ⟩ B → ℱ₂ soundFor⟨ fᵣ ⟩ B → decidable B
   ⊑-com→repr→dec {ℱ₂} ext compl pred = ⊑-⊢dec→repr→dec ext (complete→⊢-dec ℱ₂ compl) pred
 
-  com→repr→dec : complete ℱ → isPredicate B → ℱ represents B by fᵣ → decidable B
+  com→repr→dec : complete ℱ → isPredicate B → ℱ represents⟨ fᵣ ⟩ B → decidable B
   com→repr→dec compl pred Hᵣ = ⊑-com→repr→dec ⊑-refl compl pred Hᵣ λ n → Hᵣ n .from

@@ -85,10 +85,10 @@ semiDec→sep {_} {A} {_} {_} {B₁} {B₂} pred₁ pred₂ disjoint (f , Hf) (g
     eval (inl _) = true
     eval (inr _) = false
     2const : 2-Constant eval
-    2const (inl _) (_⊎_.inl _) = refl
-    2const (inr _) (_⊎_.inr _) = refl
-    2const (inl p) (_⊎_.inr q) = ⊥.rec (disjoint x (Hf x .from ∣ p ∣₁) (Hg x .from ∣ q ∣₁))
-    2const (inr p) (_⊎_.inl q) = ⊥.rec (disjoint x (Hf x .from ∣ q ∣₁) (Hg x .from ∣ p ∣₁))
+    2const (inl _) (⊎.inl _) = refl
+    2const (inr _) (⊎.inr _) = refl
+    2const (inl p) (⊎.inr q) = ⊥.rec (disjoint x (Hf x .from ∣ p ∣₁) (Hg x .from ∣ q ∣₁))
+    2const (inr p) (⊎.inl q) = ⊥.rec (disjoint x (Hf x .from ∣ q ∣₁) (Hg x .from ∣ p ∣₁))
   H₁ : ∀ x → B₁ x → fₚ x ≐ true
   H₁ x B₁x = ∣ inl $ ε (λ _ → isProp→isSet (isSetBool _ _)) (λ _ → discreteBool _ _) (Hf x .to B₁x) ∣₁ , refl
   H₂ : ∀ x → B₂ x → fₚ x ≐ false
