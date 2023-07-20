@@ -18,4 +18,5 @@ module _ {ℓ ℓ′}
   {K : ℕ → Type ℓ′} (predK : isPredicate K) (undec : ¬ decidable K) where
 
   Gödel’sIncompleteness : ℱ represents K → ¬ complete ℱ
-  Gödel’sIncompleteness repr compl = undec $ com→repr→dec compl predK (repr .snd)
+  Gödel’sIncompleteness repr compl = undec $
+    repr→dec⊢→decPred predK (repr .snd) (complete→⊢-dec ℱ compl)

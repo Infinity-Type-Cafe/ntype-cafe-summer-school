@@ -65,7 +65,7 @@ isPropDefined (P , _) = str P
 如果偏元素有定义, 我们就可以拿到定义值.
 
 ```agda
-value : (xₚ : Part A) → defined xₚ → A
+value : (x : Part A) → defined x → A
 value (_ , f) H = f H
 ```
 

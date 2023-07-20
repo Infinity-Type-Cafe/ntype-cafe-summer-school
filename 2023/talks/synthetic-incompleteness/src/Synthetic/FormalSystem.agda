@@ -30,7 +30,7 @@ record FormalSystem {ℓ} (Sentence : Type ℓ) (¬_ : Sentence → Sentence) : 
   complete = ∀ φ → ∥ (⊢ φ) ⊎ (⊢ ¬ φ) ∥₁
 
   ⊢¬-semiDec : Semidecision (⊢_ ∘ ¬_)
-  ⊢¬-semiDec = semiDecReduction (¬_ , (λ _ → ↔-refl)) ⊢-semiDec
+  ⊢¬-semiDec = semiDecReduction (¬_ , λ x → ↔-refl) ⊢-semiDec
 
   ⊢-⊢¬-sep : Separation (⊢_) (⊢_ ∘ ¬_)
   ⊢-⊢¬-sep = semiDec→sep ⊢-isPred (λ _ → ⊢-isPred _) consistent ⊢-semiDec ⊢¬-semiDec
@@ -78,36 +78,13 @@ module _ {ℓₛ : Level} {Sentence : Type ℓₛ} {¬_ : Sentence → Sentence}
   _⊢_ : Fml → Sentence → Type
   ℱ ⊢ φ = ⊢ φ where open FormalSystem ℱ
 
-  _⊑_ : Fml → Fml → Type _
-  ℱ₁ ⊑ ℱ₂ = ∀ φ → ℱ₁ ⊢ φ → ℱ₂ ⊢ φ
-
-  ⊑-refl : {ℱ : Fml} → ℱ ⊑ ℱ
-  ⊑-refl _ = idfun _
-
   _represents⟨_⟩_ : Fml → (A → Sentence) → (A → Type ℓ) → Type _
   ℱ represents⟨ fᵣ ⟩ N = fᵣ reducts N to (ℱ ⊢_)
 
   _represents_ : Fml → (A → Type ℓ) → Type _
   ℱ represents N = N ⪯ (ℱ ⊢_)
 
-  _soundFor⟨_⟩_ : Fml → (A → Sentence) → (A → Type ℓ) → Type _
-  ℱ soundFor⟨ fᵣ ⟩ N = ∀ n → ℱ ⊢ (fᵣ n) → N n
-
-  _soundFor_ : Fml → (A → Type ℓ) → Type _
-  ℱ soundFor N = Σ _ λ fᵣ → ℱ soundFor⟨ fᵣ ⟩ N
-
-  represent→sound : ℱ represents B → ℱ soundFor B
-  represent→sound (fᵣ , H) = fᵣ , λ n → H n .from
-
-  ⊑-⊢dec→repr→dec : ℱ₁ ⊑ ℱ₂ → decidable (ℱ₂ ⊢_) → isPredicate B →
-    ℱ₁ represents⟨ fᵣ ⟩ B → ℱ₂ soundFor⟨ fᵣ ⟩ B → decidable B
-  ⊑-⊢dec→repr→dec {fᵣ} ext (fᵈ , Hᵈ) pred H₁ H₂ = fᵈ ∘ fᵣ , λ n →
-    →: (λ H → Hᵈ _ .to $ ext _ $ H₁ _ .to H)
-    ←: λ H → H₂ n $ Hᵈ _ .from H
-
-  ⊑-com→repr→dec : ℱ₁ ⊑ ℱ₂ → complete ℱ₂ → isPredicate B →
-    ℱ₁ represents⟨ fᵣ ⟩ B → ℱ₂ soundFor⟨ fᵣ ⟩ B → decidable B
-  ⊑-com→repr→dec {ℱ₂} ext compl pred = ⊑-⊢dec→repr→dec ext (complete→⊢-dec ℱ₂ compl) pred
-
-  com→repr→dec : complete ℱ → isPredicate B → ℱ represents⟨ fᵣ ⟩ B → decidable B
-  com→repr→dec compl pred Hᵣ = ⊑-com→repr→dec ⊑-refl compl pred Hᵣ λ n → Hᵣ n .from
+  repr→dec⊢→decPred : isPredicate B → ℱ represents⟨ fᵣ ⟩ B → decidable (ℱ ⊢_) → decidable B
+  repr→dec⊢→decPred {fᵣ} pred Hᵣ (fᵈ , Hᵈ) = fᵈ ∘ fᵣ , λ n →
+    →: (Hᵈ _ .to   ∘ Hᵣ n .to)
+    ←: (Hᵣ n .from ∘ Hᵈ _ .from)
