@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(138, 109, 109);;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgb(183, 151, 151);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-left: 10px;
+  color:brown;
+}
+
+.coffee-image {
+  width: 50px;
+  height: 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label, input, textarea {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: brown;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgb(77, 7, 7);
+}
+
+.comment {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  
+}
+
+.gift {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 10px;
+}
+
+textarea {
+  height: 200px; /* Adjust the height as needed */
+  border-radius: 5px;
+}
+
+name {
+  height: 50px; /* Adjust the height as needed */
+  border-radius: 5px;
+}
