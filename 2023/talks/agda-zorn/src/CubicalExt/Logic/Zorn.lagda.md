@@ -7,7 +7,7 @@ zhihu-url: https://zhuanlan.zhihu.com/p/629641633
 # Agda佐恩引理
 
 > 交流Q群: 893531731  
-> 本文源码: [Zorn.lagda.md](https://github.com/choukh/agda-flypitch/blob/main/src/CubicalExt/Logic/Zorn.lagda.md)  
+> 本文源码: [Zorn.lagda.md](https://github.com/Infinity-Type-Cafe/ntype-cafe-summer-school/blob/main/2023/talks/agda-zorn/src/CubicalExt/Logic/Zorn.lagda.md)  
 > 高亮渲染: [Zorn.html](https://choukh.github.io/agda-flypitch/CubicalExt.Logic.Zorn.html)  
 > 改编自: Coq [ZornsLemma.v](https://github.com/coq-community/zorns-lemma/blob/master/ZornsLemma.v)  
 
